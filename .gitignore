@@ -2,6 +2,7 @@ node_modules/
 dist/
 .reachable-cache/
 coverage/
+.nyc_output/
 .agent/
 .agents/
 .claude/
@@ -10,3 +11,11 @@ skills-lock.json
 .tmp-vuln-check/
 .tmp-analyzer-check/
 .tmp-output-check/
+*.log
+npm-debug.log*
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
