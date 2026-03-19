@@ -20,5 +20,9 @@
     "tsup.config.ts",
     "vitest.config.ts",
     "vitest.integration.config.ts"
+  ],
+  "exclude": [
+    "dist",
+    "test/fixtures/**"
   ]
 }

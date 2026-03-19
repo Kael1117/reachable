@@ -39,11 +39,11 @@
 - [x] Create `tsup.config.ts` with entry `src/cli/index.ts`, format `["cjs"]`, `dts: true`, `outDir: "dist"`
 
 ### 1.4 CLI Framework Setup
-- [ ] Run `npm install commander@12`
-- [ ] Create `src/cli/index.ts` with root `Command` named `"reachable"`
-- [ ] Set program `version` from `package.json` at runtime using `createRequire`
-- [ ] Add `description("Vulnerability reachability analyzer for Node.js projects")`
-- [ ] Register subcommands: `scan`, `trace`, `graph` (stubs initially)
+- [x] Run `npm install commander@12`
+- [x] Create `src/cli/index.ts` with root `Command` named `"reachable"`
+- [x] Set program `version` from `package.json` at runtime using `createRequire`
+- [x] Add `description("Vulnerability reachability analyzer for Node.js projects")`
+- [x] Register subcommands: `scan`, `trace`, `graph` (stubs initially)
 
 ### 1.5 Config System
 - [ ] Run `npm install cosmiconfig zod`
