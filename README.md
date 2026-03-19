@@ -1,7 +1,7 @@
 # reachable
 
 ![CI](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
-![npm](https://img.shields.io/npm/v/reachable)
+![npm](https://img.shields.io/npm/v/%40merupatel%2Freachable)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 `reachable` is a local-first CLI that answers the question developers ask after `npm audit`: is the vulnerable code path actually reachable from my application?
@@ -21,7 +21,7 @@ It parses JavaScript and TypeScript with tree-sitter, builds a project call grap
 ## Installation
 
 ```bash
-npm install -g reachable
+npm install -g @merupatel/reachable
 ```
 
 Run without installing globally:
