@@ -14,21 +14,15 @@ jobs:
       issues: write
       pull-requests: write
       id-token: write
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 22.14.0
           cache: npm
       - run: npm ci
-      - if: ${{ env.NPM_TOKEN == '' }}
-        run: echo "Skipping npm release because NPM_TOKEN is not configured."
-      - if: ${{ env.NPM_TOKEN != '' }}
-        run: npx semantic-release
+      - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ env.NPM_TOKEN }}
