@@ -15,23 +15,23 @@
 - [x] Create `LICENSE` file (MIT)
 - [x] Create `.gitignore` (node_modules, dist, .reachable-cache, coverage)
 - [x] Create `CHANGELOG.md` with initial `## [Unreleased]` section
-- [ ] Run `git init && git add -A && git commit -m "chore: initial scaffold"`
+- [x] Run `git init && git add -A && git commit -m "chore: initial scaffold"`
 
 ### 1.2 Directory Structure
-- [ ] Create `src/` directory
-- [ ] Create `src/cli/` directory
-- [ ] Create `src/parser/` directory
-- [ ] Create `src/graph/` directory
-- [ ] Create `src/vuln/` directory
-- [ ] Create `src/output/` directory
-- [ ] Create `src/config/` directory
-- [ ] Create `src/utils/` directory
-- [ ] Create `test/` directory
-- [ ] Create `test/fixtures/` directory
-- [ ] Create `test/fixtures/simple-express/` with `package.json` and `src/index.ts`
-- [ ] Create `test/fixtures/unused-lodash/` with a lodash import that never calls vulnerable fn
-- [ ] Create `test/fixtures/monorepo/` with two workspace packages
-- [ ] Create `.github/workflows/` directory
+- [x] Create `src/` directory
+- [x] Create `src/cli/` directory
+- [x] Create `src/parser/` directory
+- [x] Create `src/graph/` directory
+- [x] Create `src/vuln/` directory
+- [x] Create `src/output/` directory
+- [x] Create `src/config/` directory
+- [x] Create `src/utils/` directory
+- [x] Create `test/` directory
+- [x] Create `test/fixtures/` directory
+- [x] Create `test/fixtures/simple-express/` with `package.json` and `src/index.ts`
+- [x] Create `test/fixtures/unused-lodash/` with a lodash import that never calls vulnerable fn
+- [x] Create `test/fixtures/monorepo/` with two workspace packages
+- [x] Create `.github/workflows/` directory
 
 ### 1.3 TypeScript Setup
 - [ ] Run `npm install --save-dev typescript@5 @types/node`
