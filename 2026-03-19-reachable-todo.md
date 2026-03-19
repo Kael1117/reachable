@@ -206,84 +206,84 @@
 ## Phase 6: CLI Commands
 
 ### 6.1 `reachable scan` Command
-- [ ] Create `src/cli/scan.ts` exporting a `Command`
-- [ ] Register `--entry <files...>` option (string array, repeatable)
-- [ ] Register `--format <format>` option with choices `["table","json","sarif","markdown"]`
-- [ ] Register `--fail-on <severity>` option with choices `["critical","high","moderate","low","all"]`
-- [ ] Register `--reachable-only` boolean flag
-- [ ] Register `--no-cache` boolean flag
-- [ ] Register `--dry-run` boolean flag
-- [ ] Register `--quiet` boolean flag
-- [ ] Register `--depth <number>` option (integer, default 20)
-- [ ] Register `--ignore <ids...>` option (string array)
-- [ ] Load config using `loadConfig(cwd)` and merge with CLI flags (flags win)
-- [ ] Call `analyze(options)` with merged config
-- [ ] Pipe result to appropriate formatter based on `--format`
-- [ ] Set exit code: 0 if no REACHABLE above threshold, 1 if REACHABLE found, 2 on error
+- [x] Create `src/cli/scan.ts` exporting a `Command`
+- [x] Register `--entry <files...>` option (string array, repeatable)
+- [x] Register `--format <format>` option with choices `["table","json","sarif","markdown"]`
+- [x] Register `--fail-on <severity>` option with choices `["critical","high","moderate","low","all"]`
+- [x] Register `--reachable-only` boolean flag
+- [x] Register `--no-cache` boolean flag
+- [x] Register `--dry-run` boolean flag
+- [x] Register `--quiet` boolean flag
+- [x] Register `--depth <number>` option (integer, default 20)
+- [x] Register `--ignore <ids...>` option (string array)
+- [x] Load config using `loadConfig(cwd)` and merge with CLI flags (flags win)
+- [x] Call `analyze(options)` with merged config
+- [x] Pipe result to appropriate formatter based on `--format`
+- [x] Set exit code: 0 if no REACHABLE above threshold, 1 if REACHABLE found, 2 on error
 
 ### 6.2 `reachable trace` Command
-- [ ] Create `src/cli/trace.ts` exporting a `Command`
-- [ ] Accept positional argument `<package>` (required)
-- [ ] Build call graph and show all paths from entry points to calls into `<package>`
-- [ ] Display as an indented tree using chalk for coloring
-- [ ] Exit 0 if no paths found (print "No reachable paths found to <package>")
+- [x] Create `src/cli/trace.ts` exporting a `Command`
+- [x] Accept positional argument `<package>` (required)
+- [x] Build call graph and show all paths from entry points to calls into `<package>`
+- [x] Display as an indented tree using chalk for coloring
+- [x] Exit 0 if no paths found (print "No reachable paths found to <package>")
 
 ### 6.3 `reachable graph` Command
-- [ ] Create `src/cli/graph.ts` exporting a `Command`
-- [ ] Accept positional argument `<file>` (required)
-- [ ] Parse the file and print all imports and exports as a formatted list
-- [ ] Show which exported symbols are reachable from entry points
+- [x] Create `src/cli/graph.ts` exporting a `Command`
+- [x] Accept positional argument `<file>` (required)
+- [x] Parse the file and print all imports and exports as a formatted list
+- [x] Show which exported symbols are reachable from entry points
 
 ---
 
 ## Phase 7: Output Formatters
 
 ### 7.1 Table Formatter
-- [ ] Create `src/output/table.ts`
-- [ ] Install `npm install cli-table3 chalk`
-- [ ] Render separate sections for REACHABLE (red), UNKNOWN (yellow), UNREACHABLE (green/dim)
-- [ ] Columns: `Severity`, `Package`, `GHSA ID`, `Status`, `Vulnerable Symbol`
-- [ ] Sort rows within each section by CVSS score descending
-- [ ] Print call path under REACHABLE rows in dimmed text
-- [ ] Respect `NO_COLOR` env var — disable chalk when set
+- [x] Create `src/output/table.ts`
+- [x] Install `npm install cli-table3 chalk`
+- [x] Render separate sections for REACHABLE (red), UNKNOWN (yellow), UNREACHABLE (green/dim)
+- [x] Columns: `Severity`, `Package`, `GHSA ID`, `Status`, `Vulnerable Symbol`
+- [x] Sort rows within each section by CVSS score descending
+- [x] Print call path under REACHABLE rows in dimmed text
+- [x] Respect `NO_COLOR` env var — disable chalk when set
 
 ### 7.2 JSON Formatter
-- [ ] Create `src/output/json.ts`
-- [ ] Output `{ summary: { reachable: N, unreachable: N, unknown: N }, results: ReachabilityResult[] }`
-- [ ] Include `callPath` in each REACHABLE result
-- [ ] Write to `process.stdout` only (not logger)
+- [x] Create `src/output/json.ts`
+- [x] Output `{ summary: { reachable: N, unreachable: N, unknown: N }, results: ReachabilityResult[] }`
+- [x] Include `callPath` in each REACHABLE result
+- [x] Write to `process.stdout` only (not logger)
 
 ### 7.3 SARIF Formatter
-- [ ] Create `src/output/sarif.ts`
-- [ ] Implement SARIF v2.1.0 schema: `{ version: "2.1.0", $schema: "...", runs: [{ tool, results }] }`
-- [ ] Set `tool.driver.name: "reachable"`, `tool.driver.version`
-- [ ] Map each REACHABLE result to a SARIF `result` with `level: "error"` or `"warning"` based on severity
-- [ ] Set `result.locations[0].physicalLocation` to the call site file + line from `callPath[0]`
-- [ ] Only include REACHABLE results in SARIF output (not UNKNOWN or UNREACHABLE)
+- [x] Create `src/output/sarif.ts`
+- [x] Implement SARIF v2.1.0 schema: `{ version: "2.1.0", $schema: "...", runs: [{ tool, results }] }`
+- [x] Set `tool.driver.name: "reachable"`, `tool.driver.version`
+- [x] Map each REACHABLE result to a SARIF `result` with `level: "error"` or `"warning"` based on severity
+- [x] Set `result.locations[0].physicalLocation` to the call site file + line from `callPath[0]`
+- [x] Only include REACHABLE results in SARIF output (not UNKNOWN or UNREACHABLE)
 
 ### 7.4 Markdown Formatter
-- [ ] Create `src/output/markdown.ts`
-- [ ] Output GitHub-flavored markdown suitable for PR comments
-- [ ] Use collapsible `<details>` sections for UNREACHABLE items
-- [ ] Include a summary badge table at the top
-- [ ] Format GHSA IDs as links to `https://github.com/advisories/<id>`
+- [x] Create `src/output/markdown.ts`
+- [x] Output GitHub-flavored markdown suitable for PR comments
+- [x] Use collapsible `<details>` sections for UNREACHABLE items
+- [x] Include a summary badge table at the top
+- [x] Format GHSA IDs as links to `https://github.com/advisories/<id>`
 
 ---
 
 ## Phase 8: Error Handling
 
 ### 8.1 Custom Error Classes
-- [ ] Create `src/utils/errors.ts`
-- [ ] Implement `ReachableError extends Error` with `code: string` field
-- [ ] Implement `OsvApiError extends ReachableError` with `statusCode: number`
-- [ ] Implement `ParseError extends ReachableError` with `file: string`
-- [ ] Implement `ConfigError extends ReachableError`
+- [x] Create `src/utils/errors.ts`
+- [x] Implement `ReachableError extends Error` with `code: string` field
+- [x] Implement `OsvApiError extends ReachableError` with `statusCode: number`
+- [x] Implement `ParseError extends ReachableError` with `file: string`
+- [x] Implement `ConfigError extends ReachableError`
 
 ### 8.2 CLI Error Handler
-- [ ] In `src/cli/index.ts`, add `.exitOverride()` and catch `CommanderError`
-- [ ] Add global `process.on("uncaughtException")` handler — log error with code, exit 2
-- [ ] Add `process.on("unhandledRejection")` handler — log rejection, exit 2
-- [ ] Never print stack traces in non-verbose mode — only print `error.message`
+- [x] In `src/cli/index.ts`, add `.exitOverride()` and catch `CommanderError`
+- [x] Add global `process.on("uncaughtException")` handler — log error with code, exit 2
+- [x] Add `process.on("unhandledRejection")` handler — log rejection, exit 2
+- [x] Never print stack traces in non-verbose mode — only print `error.message`
 
 ---
 

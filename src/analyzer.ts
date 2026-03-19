@@ -146,7 +146,7 @@ function entryCandidatesForPackage(packageDir: string): string[] {
   return [...new Set(candidates)];
 }
 
-function detectEntryPoints(cwd: string, explicitEntries?: string[]): string[] {
+export function detectEntryPoints(cwd: string, explicitEntries?: string[]): string[] {
   if (explicitEntries && explicitEntries.length > 0) {
     return explicitEntries.map((entry) => path.resolve(cwd, entry));
   }
@@ -162,7 +162,7 @@ function detectEntryPoints(cwd: string, explicitEntries?: string[]): string[] {
   return [...new Set(entryPoints)];
 }
 
-function collectSourceFiles(cwd: string): string[] {
+export function collectSourceFiles(cwd: string): string[] {
   const sourceFiles: string[] = [];
   const ignoredDirectories = new Set(["node_modules", "dist", "coverage", ".git", ".reachable-cache"]);
 

@@ -9,3 +9,4 @@ skills-lock.json
 .tmp-parser-check/
 .tmp-vuln-check/
 .tmp-analyzer-check/
+.tmp-output-check/

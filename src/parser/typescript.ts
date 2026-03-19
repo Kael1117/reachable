@@ -1,8 +1,8 @@
 // tree-sitter TS/TSX parser + import extractor.
-import { createRequire } from "node:module";
 import { readFileSync } from "node:fs";
 
 import Parser from "tree-sitter";
+import TypeScriptGrammars from "tree-sitter-typescript";
 
 import {
   extractCallSitesWithLanguage,
@@ -11,12 +11,6 @@ import {
   extractExportsWithLanguage,
 } from "./javascript.js";
 import type { ImportRef, ParsedModule } from "./index.js";
-
-const require = createRequire(import.meta.url);
-const TypeScriptGrammars = require("tree-sitter-typescript") as {
-  typescript: unknown;
-  tsx: unknown;
-};
 
 const IMPORT_TYPE_QUERY = '(import_statement) @import';
 

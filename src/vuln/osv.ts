@@ -1,14 +1,12 @@
 // OSV REST API client (POST /v1/querybatch).
-import { createRequire } from "node:module";
 import { setTimeout as sleep } from "node:timers/promises";
 
 import { fetch } from "undici";
+import packageJson from "../../package.json";
 
 import { OsvApiError } from "../utils/errors.js";
 import type { Advisory } from "./types.js";
 
-const require = createRequire(import.meta.url);
-const packageJson = require("../../package.json") as { version: string };
 const USER_AGENT = `reachable/${packageJson.version}`;
 const OSV_BATCH_URL = "https://api.osv.dev/v1/querybatch";
 
