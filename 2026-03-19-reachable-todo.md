@@ -303,13 +303,13 @@
 - [x] Test tsconfig path alias `@/components/Button` resolves to `src/components/Button.tsx`
 
 ### 9.2 Graph Tests
-- [ ] Create `test/graph/builder.test.ts`
-- [ ] Test 2-file graph: A imports B, asserts edge A→B
-- [ ] Test circular import: A imports B, B imports A — asserts no infinite loop, warning logged
-- [ ] Create `test/graph/traversal.test.ts`
-- [ ] Test BFS finds node at depth 3 in a chain A→B→C→D
-- [ ] Test `findPathTo` returns correct ordered array
-- [ ] Test `isNodeReachable` returns false for isolated node
+- [x] Create `test/graph/builder.test.ts`
+- [x] Test 2-file graph: A imports B, asserts edge A→B
+- [x] Test circular import: A imports B, B imports A — asserts no infinite loop, warning logged
+- [x] Create `test/graph/traversal.test.ts`
+- [x] Test BFS finds node at depth 3 in a chain A→B→C→D
+- [x] Test `findPathTo` returns correct ordered array
+- [x] Test `isNodeReachable` returns false for isolated node
 
 ### 9.3 Vuln Tests
 - [ ] Create `test/vuln/cache.test.ts`
