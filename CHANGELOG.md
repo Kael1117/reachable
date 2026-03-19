@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Meru143/reachable/compare/v1.0.1...v1.0.2) (2026-03-19)
+
+
+### Bug Fixes
+
+* show explicit empty scan output ([4c3a439](https://github.com/Meru143/reachable/commit/4c3a439bea2946ba16bc606e44f7ca6c64a9cdb5))
+
 ## [1.0.1](https://github.com/Meru143/reachable/compare/v1.0.0...v1.0.1) (2026-03-19)
 
 
