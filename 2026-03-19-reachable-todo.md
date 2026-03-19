@@ -114,27 +114,27 @@
 ## Phase 3: Call Graph Builder
 
 ### 3.1 Types
-- [ ] Create `src/graph/types.ts`
-- [ ] Define `CallNode` interface: `{ id: string; file: string; name: string; line: number; isEntryPoint: boolean }`
-- [ ] Define `CallEdge` interface: `{ from: string; to: string; importedFrom: string }`
-- [ ] Define `CallGraph` interface: `{ nodes: Map<string, CallNode>; edges: CallEdge[]; entryPoints: string[] }`
+- [x] Create `src/graph/types.ts`
+- [x] Define `CallNode` interface: `{ id: string; file: string; name: string; line: number; isEntryPoint: boolean }`
+- [x] Define `CallEdge` interface: `{ from: string; to: string; importedFrom: string }`
+- [x] Define `CallGraph` interface: `{ nodes: Map<string, CallNode>; edges: CallEdge[]; entryPoints: string[] }`
 
 ### 3.2 Graph Builder
-- [ ] Create `src/graph/builder.ts`
-- [ ] Implement `buildGraph(files: string[], entryPoints: string[], cwd: string): CallGraph`
-- [ ] For each file: call `parseFile()`, create `CallNode` for each exported function
-- [ ] For each import reference: create `CallEdge` from importing file to imported module
-- [ ] Detect test files (`*.test.*`, `*.spec.*`, `__tests__/`) and skip unless `--include-tests` set
-- [ ] Detect and handle circular imports: track visited nodes in a `Set<string>`, skip if already visited
-- [ ] Log warning when circular import detected
+- [x] Create `src/graph/builder.ts`
+- [x] Implement `buildGraph(files: string[], entryPoints: string[], cwd: string): CallGraph`
+- [x] For each file: call `parseFile()`, create `CallNode` for each exported function
+- [x] For each import reference: create `CallEdge` from importing file to imported module
+- [x] Detect test files (`*.test.*`, `*.spec.*`, `__tests__/`) and skip unless `--include-tests` set
+- [x] Detect and handle circular imports: track visited nodes in a `Set<string>`, skip if already visited
+- [x] Log warning when circular import detected
 
 ### 3.3 BFS Traversal
-- [ ] Create `src/graph/traversal.ts`
-- [ ] Implement `findReachableNodes(graph: CallGraph, maxDepth: number): Set<string>` using BFS from all entry points
-- [ ] Implement `findPathTo(graph: CallGraph, targetNodeId: string): string[] | null` returning ordered path
-- [ ] Implement `isNodeReachable(graph: CallGraph, nodeId: string): boolean`
-- [ ] Terminate BFS branch when `depth > maxDepth`, log warning
-- [ ] Return `null` path (not false) when target node not in graph at all
+- [x] Create `src/graph/traversal.ts`
+- [x] Implement `findReachableNodes(graph: CallGraph, maxDepth: number): Set<string>` using BFS from all entry points
+- [x] Implement `findPathTo(graph: CallGraph, targetNodeId: string): string[] | null` returning ordered path
+- [x] Implement `isNodeReachable(graph: CallGraph, nodeId: string): boolean`
+- [x] Terminate BFS branch when `depth > maxDepth`, log warning
+- [x] Return `null` path (not false) when target node not in graph at all
 
 ---
 
