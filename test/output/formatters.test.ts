@@ -84,4 +84,12 @@ describe("output formatters", () => {
     expect(table).toContain("GHSA-reachable");
     expect(table).toContain("Path: src/index.ts::module -> src/index.ts::call:lodash.trim:12");
   });
+
+  it("formats empty markdown and table output with an explicit no-results message", () => {
+    const markdown = formatMarkdown([]);
+    const table = formatTable([]);
+
+    expect(markdown).toContain("No advisories found.");
+    expect(table).toContain("No advisories found.");
+  });
 });

@@ -21,6 +21,11 @@ export function formatMarkdown(results: ReachabilityResult[]): string {
     "",
   ];
 
+  if (results.length === 0) {
+    lines.push("No advisories found.");
+    return lines.join("\n");
+  }
+
   if (reachable.length > 0) {
     lines.push("## Reachable");
     for (const result of reachable) {

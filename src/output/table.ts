@@ -23,6 +23,10 @@ function sortByScore(results: ReachabilityResult[]): ReachabilityResult[] {
 }
 
 export function formatTable(results: ReachabilityResult[]): string {
+  if (results.length === 0) {
+    return "No advisories found.";
+  }
+
   const sections: ReachabilityResult["status"][] = ["REACHABLE", "UNKNOWN", "UNREACHABLE"];
   const blocks: string[] = [];
 
