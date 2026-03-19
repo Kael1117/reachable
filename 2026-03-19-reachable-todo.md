@@ -377,19 +377,19 @@
 ## Phase 12: Documentation
 
 ### 12.1 README.md
-- [ ] Add CI badge, npm version badge, license badge
-- [ ] Add "Why reachable?" section with `npm audit` comparison
-- [ ] Add Installation section: `npm install -g reachable` and `npx reachable`
-- [ ] Add Quick Start section with `reachable scan` output screenshot (ASCII)
-- [ ] Add Config file reference section
-- [ ] Add Flags reference table
-- [ ] Add CI Integration section with GitHub Actions example YAML
+- [x] Add CI badge, npm version badge, license badge
+- [x] Add "Why reachable?" section with `npm audit` comparison
+- [x] Add Installation section: `npm install -g reachable` and `npx reachable`
+- [x] Add Quick Start section with `reachable scan` output screenshot (ASCII)
+- [x] Add Config file reference section
+- [x] Add Flags reference table
+- [x] Add CI Integration section with GitHub Actions example YAML
 
 ### 12.2 Community Files
-- [ ] Create `CONTRIBUTING.md` with development setup steps
-- [ ] Create `CODE_OF_CONDUCT.md` using Contributor Covenant 2.1
-- [ ] Create `SECURITY.md` with vulnerability disclosure policy
-- [ ] Create `.github/ISSUE_TEMPLATE/bug_report.md`
-- [ ] Create `.github/ISSUE_TEMPLATE/feature_request.md`
-- [ ] Create `.github/PULL_REQUEST_TEMPLATE.md`
-- [ ] Create `.editorconfig` with indent_style=space, indent_size=2
+- [x] Create `CONTRIBUTING.md` with development setup steps
+- [x] Create `CODE_OF_CONDUCT.md` using Contributor Covenant 2.1
+- [x] Create `SECURITY.md` with vulnerability disclosure policy
+- [x] Create `.github/ISSUE_TEMPLATE/bug_report.md`
+- [x] Create `.github/ISSUE_TEMPLATE/feature_request.md`
+- [x] Create `.github/PULL_REQUEST_TEMPLATE.md`
+- [x] Create `.editorconfig` with indent_style=space, indent_size=2
