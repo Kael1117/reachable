@@ -1,3 +1,3 @@
-import express from "express";
+import lodash from "lodash";
 
-export const app = express();
+export const trimmed = lodash.trim("  reachable  ");

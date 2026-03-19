@@ -1,1 +1,3 @@
-export const packageA = "a";
+import lodash from "lodash";
+
+export const packageA = lodash.trim("a");

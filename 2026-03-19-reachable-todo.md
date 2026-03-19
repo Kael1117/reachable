@@ -334,20 +334,20 @@
 ## Phase 10: Integration Tests
 
 ### 10.1 Fixture: Simple Express App with Reachable Vuln
-- [ ] Create `test/fixtures/simple-express/package.json` with a known-vulnerable dep pinned to vulnerable version
-- [ ] Create `test/fixtures/simple-express/src/index.ts` that calls the vulnerable function
-- [ ] Create `test/integration/reachable.integration.ts`
-- [ ] Run `analyze()` on fixture, assert result contains at least 1 REACHABLE entry
-- [ ] Assert the call path array is non-empty for the REACHABLE result
+- [x] Create `test/fixtures/simple-express/package.json` with a known-vulnerable dep pinned to vulnerable version
+- [x] Create `test/fixtures/simple-express/src/index.ts` that calls the vulnerable function
+- [x] Create `test/integration/reachable.integration.ts`
+- [x] Run `analyze()` on fixture, assert result contains at least 1 REACHABLE entry
+- [x] Assert the call path array is non-empty for the REACHABLE result
 
 ### 10.2 Fixture: Package Imported but Safe Function Only
-- [ ] Create `test/fixtures/safe-usage/src/index.ts` that imports lodash but only calls `.cloneDeep` (not a vulnerable fn)
-- [ ] Run `analyze()` on fixture, assert 0 REACHABLE results for lodash advisories
+- [x] Create `test/fixtures/safe-usage/src/index.ts` that imports lodash but only calls `.cloneDeep` (not a vulnerable fn)
+- [x] Run `analyze()` on fixture, assert 0 REACHABLE results for lodash advisories
 
 ### 10.3 Monorepo Fixture
-- [ ] Create `test/fixtures/monorepo/package.json` with `workspaces: ["packages/*"]`
-- [ ] Create two workspace packages each with their own source and lockfile
-- [ ] Assert both workspaces are analyzed when `--cwd` points to monorepo root
+- [x] Create `test/fixtures/monorepo/package.json` with `workspaces: ["packages/*"]`
+- [x] Create two workspace packages each with their own source and lockfile
+- [x] Assert both workspaces are analyzed when `--cwd` points to monorepo root
 
 ---
 

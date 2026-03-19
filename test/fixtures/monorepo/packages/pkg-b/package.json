@@ -1,5 +1,8 @@
 {
   "name": "@fixture/pkg-b",
   "version": "0.0.0",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "minimist": "1.2.5"
+  }
 }

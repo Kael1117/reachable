@@ -79,6 +79,33 @@ function workspaceDirectories(cwd: string): string[] {
   return directories;
 }
 
+function hasPackageLock(directory: string): boolean {
+  return existsSync(path.join(directory, "package-lock.json")) || existsSync(path.join(directory, "node_modules", ".package-lock.json"));
+}
+
+function collectInstalledPackages(cwd: string) {
+  const installedPackages = new Map<string, ReturnType<typeof parsePackageLock>[number]>();
+  let foundLockfile = false;
+
+  for (const packageDir of [cwd, ...workspaceDirectories(cwd)]) {
+    if (!hasPackageLock(packageDir)) {
+      continue;
+    }
+
+    foundLockfile = true;
+
+    for (const installedPackage of parsePackageLock(packageDir)) {
+      installedPackages.set(`${installedPackage.name}@${installedPackage.version}`, installedPackage);
+    }
+  }
+
+  if (!foundLockfile) {
+    throw new ReachableError("E001", "Run npm install first, or specify --cwd");
+  }
+
+  return [...installedPackages.values()];
+}
+
 function entryCandidatesForPackage(packageDir: string): string[] {
   const packageJson = packageJsonAt(packageDir);
   if (!packageJson) {
@@ -255,7 +282,7 @@ export async function analyze(options: AnalyzeOptions): Promise<ReachabilityResu
     clearCache(cacheDir);
   }
 
-  const installedPackages = parsePackageLock(cwd);
+  const installedPackages = collectInstalledPackages(cwd);
   const entryPoints = detectEntryPoints(cwd, options.entry);
   const sourceFiles = collectSourceFiles(cwd);
   const graph = buildGraph(sourceFiles, entryPoints, cwd);

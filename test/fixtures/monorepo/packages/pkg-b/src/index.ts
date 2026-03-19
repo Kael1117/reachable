@@ -1,1 +1,3 @@
-export const packageB = "b";
+import minimist from "minimist";
+
+export const packageB = minimist(["--flag"]);

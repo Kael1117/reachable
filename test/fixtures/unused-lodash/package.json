@@ -1,5 +1,8 @@
 {
   "name": "unused-lodash",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "lodash": "4.17.20"
+  }
 }
