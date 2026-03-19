@@ -110,6 +110,26 @@ describe("analyzer", () => {
   it("auto-detects fallback and workspace entry points", () => {
     const simpleEntries = detectEntryPoints(fixturePath("simple-express"));
     const monorepoEntries = detectEntryPoints(fixturePath("monorepo"));
+    const cwd = makeTempDir();
+    writeProjectFile(
+      cwd,
+      "package.json",
+      JSON.stringify(
+        {
+          name: "cli-build-output",
+          private: true,
+          main: "dist/cli/index.js",
+          bin: {
+            reachable: "dist/cli/index.js",
+          },
+        },
+        null,
+        2,
+      ),
+    );
+    writeProjectFile(cwd, path.join("src", "cli", "index.ts"), "export const main = true;\n");
+    writeProjectFile(cwd, path.join("dist", "cli", "index.js"), "module.exports = {};\n");
+    const buildOutputEntries = detectEntryPoints(cwd);
 
     expect(simpleEntries).toContain(path.join(fixturePath("simple-express"), "src", "index.ts"));
     expect(monorepoEntries).toEqual(
@@ -118,6 +138,8 @@ describe("analyzer", () => {
         path.join(fixturePath("monorepo"), "packages", "pkg-b", "src", "index.ts"),
       ]),
     );
+    expect(buildOutputEntries).toContain(path.join(cwd, "src", "cli", "index.ts"));
+    expect(buildOutputEntries).not.toContain(path.join(cwd, "dist", "cli", "index.js"));
   });
 
   it("throws E002 when no entry point can be detected", () => {

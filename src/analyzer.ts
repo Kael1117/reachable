@@ -37,6 +37,22 @@ function resolveFileCandidate(candidate: string): string | null {
   return null;
 }
 
+function preferredEntryCandidates(candidate: string, packageDir: string): string[] {
+  const relativeCandidate = path.relative(packageDir, candidate);
+  const pathSegments = relativeCandidate.split(path.sep);
+
+  if (pathSegments[0] !== "dist") {
+    return [candidate];
+  }
+
+  const relativeWithoutExtension = relativeCandidate.replace(/^dist[\\/]/, "").replace(/\.[^.]+$/, "");
+  const sourceCandidates = [path.join(packageDir, "src", relativeWithoutExtension), path.join(packageDir, relativeWithoutExtension)]
+    .map((entryCandidate) => resolveFileCandidate(entryCandidate))
+    .filter((entryCandidate): entryCandidate is string => Boolean(entryCandidate));
+
+  return sourceCandidates.length > 0 ? sourceCandidates : [candidate];
+}
+
 function packageJsonAt(directory: string): Record<string, unknown> | null {
   const packageJsonPath = path.join(directory, "package.json");
   if (!existsSync(packageJsonPath)) {
@@ -117,7 +133,7 @@ function entryCandidatesForPackage(packageDir: string): string[] {
   if (typeof main === "string") {
     const resolvedMain = resolveFileCandidate(path.resolve(packageDir, main));
     if (resolvedMain) {
-      candidates.push(resolvedMain);
+      candidates.push(...preferredEntryCandidates(resolvedMain, packageDir));
     }
   }
 
@@ -128,7 +144,7 @@ function entryCandidatesForPackage(packageDir: string): string[] {
     if (typeof rootExport === "string") {
       const resolvedExport = resolveFileCandidate(path.resolve(packageDir, rootExport));
       if (resolvedExport) {
-        candidates.push(resolvedExport);
+        candidates.push(...preferredEntryCandidates(resolvedExport, packageDir));
       }
     } else if (rootExport && typeof rootExport === "object") {
       const conditionalExportMap = rootExport as Record<string, unknown>;
@@ -137,7 +153,7 @@ function entryCandidatesForPackage(packageDir: string): string[] {
         if (typeof conditionalExport === "string") {
           const resolvedExport = resolveFileCandidate(path.resolve(packageDir, conditionalExport));
           if (resolvedExport) {
-            candidates.push(resolvedExport);
+            candidates.push(...preferredEntryCandidates(resolvedExport, packageDir));
             break;
           }
         }
@@ -149,7 +165,7 @@ function entryCandidatesForPackage(packageDir: string): string[] {
   if (typeof binField === "string") {
     const resolvedBin = resolveFileCandidate(path.resolve(packageDir, binField));
     if (resolvedBin) {
-      candidates.push(resolvedBin);
+      candidates.push(...preferredEntryCandidates(resolvedBin, packageDir));
     }
   } else if (binField && typeof binField === "object") {
     for (const value of Object.values(binField)) {
@@ -158,7 +174,7 @@ function entryCandidatesForPackage(packageDir: string): string[] {
       }
       const resolvedBin = resolveFileCandidate(path.resolve(packageDir, value));
       if (resolvedBin) {
-        candidates.push(resolvedBin);
+        candidates.push(...preferredEntryCandidates(resolvedBin, packageDir));
       }
     }
   }
