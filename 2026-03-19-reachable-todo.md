@@ -46,32 +46,32 @@
 - [x] Register subcommands: `scan`, `trace`, `graph` (stubs initially)
 
 ### 1.5 Config System
-- [ ] Run `npm install cosmiconfig zod`
-- [ ] Create `src/config/types.ts` with `ConfigSchema` zod object
-- [ ] Define fields: `entry`, `failOn`, `ignore`, `devPackages`, `cache.ttlHours`, `cache.dir`
-- [ ] Create `src/config/loader.ts` with `loadConfig(cwd: string)` using `cosmiconfig("reachable")`
-- [ ] Apply `ConfigSchema.parse()` to loaded config for validation
-- [ ] Export `getDefaultConfig()` returning all defaults
+- [x] Run `npm install cosmiconfig zod`
+- [x] Create `src/config/types.ts` with `ConfigSchema` zod object
+- [x] Define fields: `entry`, `failOn`, `ignore`, `devPackages`, `cache.ttlHours`, `cache.dir`
+- [x] Create `src/config/loader.ts` with `loadConfig(cwd: string)` using `cosmiconfig("reachable")`
+- [x] Apply `ConfigSchema.parse()` to loaded config for validation
+- [x] Export `getDefaultConfig()` returning all defaults
 
 ### 1.6 Logging Setup
-- [ ] Run `npm install pino`
-- [ ] Create `src/utils/logger.ts` exporting a `pino` logger instance
-- [ ] Read `LOG_LEVEL` from `process.env` with fallback `"warn"`
-- [ ] Export `setVerbose(val: boolean)` that sets level to `"debug"`
-- [ ] Use `pino-pretty` only when `process.stdout.isTTY` is true
+- [x] Run `npm install pino`
+- [x] Create `src/utils/logger.ts` exporting a `pino` logger instance
+- [x] Read `LOG_LEVEL` from `process.env` with fallback `"warn"`
+- [x] Export `setVerbose(val: boolean)` that sets level to `"debug"`
+- [x] Use `pino-pretty` only when `process.stdout.isTTY` is true
 
 ### 1.7 Build & Release Config
-- [ ] Create `.github/workflows/ci.yml` with triggers on `push` and `pull_request`
-- [ ] Create `.github/workflows/release.yml` triggered on tag `v*`
-- [ ] Run `npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git`
-- [ ] Create `.releaserc.json` configuring semantic-release with npm and changelog plugins
-- [ ] Create `Makefile` with targets: `lint`, `test`, `build`, `test-integration`
+- [x] Create `.github/workflows/ci.yml` with triggers on `push` and `pull_request`
+- [x] Create `.github/workflows/release.yml` triggered on tag `v*`
+- [x] Run `npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git`
+- [x] Create `.releaserc.json` configuring semantic-release with npm and changelog plugins
+- [x] Create `Makefile` with targets: `lint`, `test`, `build`, `test-integration`
 
 ### 1.8 Testing Setup
-- [ ] Run `npm install --save-dev vitest @vitest/coverage-v8`
-- [ ] Create `vitest.config.ts` with `include: ["test/**/*.test.ts"]`
-- [ ] Create `vitest.integration.config.ts` with `include: ["test/**/*.integration.ts"]`
-- [ ] Create `test/helpers.ts` with utility functions for loading fixtures
+- [x] Run `npm install --save-dev vitest @vitest/coverage-v8`
+- [x] Create `vitest.config.ts` with `include: ["test/**/*.test.ts"]`
+- [x] Create `vitest.integration.config.ts` with `include: ["test/**/*.integration.ts"]`
+- [x] Create `test/helpers.ts` with utility functions for loading fixtures
 
 ---
 

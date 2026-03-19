@@ -7,7 +7,7 @@ import { graphCommand } from "./graph.js";
 import { scanCommand } from "./scan.js";
 import { traceCommand } from "./trace.js";
 
-const require = createRequire(import.meta.url);
+const require = createRequire(__filename);
 const packageJson = require("../../package.json") as { version: string };
 
 export const program = new Command()
