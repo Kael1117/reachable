@@ -4,9 +4,13 @@
 ![npm](https://img.shields.io/npm/v/%40merupatel%2Freachable)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-`reachable` is a local-first CLI that answers the question developers ask after `npm audit`: is the vulnerable code path actually reachable from my application?
+`reachable` is a local-first CLI for JavaScript and TypeScript that answers the question developers ask after `npm audit`: is the vulnerable code path actually reachable from my application?
 
 It parses JavaScript and TypeScript with tree-sitter, builds a project call graph, queries OSV advisories, and reports whether the vulnerable symbol is reachable, unknown, or unreachable from your entry points.
+
+- Cut false-positive dependency noise by separating `REACHABLE`, `UNKNOWN`, and `UNREACHABLE` findings.
+- Fail CI on code paths that actually matter instead of every advisory in the lockfile.
+- Run locally or in GitHub Actions without a hosted service, account, or API key.
 
 ## Why reachable?
 
@@ -17,6 +21,14 @@ It parses JavaScript and TypeScript with tree-sitter, builds a project call grap
 - It traces entry points through your code instead of flagging every installed vulnerable package equally.
 - It separates `REACHABLE`, `UNKNOWN`, and `UNREACHABLE` findings so real risk rises to the top.
 - It works locally in CI without a hosted service, account, or API key.
+
+## Why Not Just `npm audit`?
+
+| Tool | Flags vulnerable packages | Checks whether your code reaches the vulnerable symbol | Local-first CLI |
+| --- | --- | --- | --- |
+| `reachable` | Yes | Yes | Yes |
+| `npm audit` | Yes | No | Yes |
+| Dependabot alerts | Yes | No | No |
 
 ## Installation
 

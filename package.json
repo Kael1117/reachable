@@ -1,7 +1,7 @@
 {
   "name": "@merupatel/reachable",
   "version": "1.0.4",
-  "description": "Dependency vulnerability reachability analyzer",
+  "description": "Local-first vulnerability reachability CLI for JavaScript and TypeScript",
   "bin": {
     "reachable": "dist/cli/index.js"
   },
@@ -29,10 +29,22 @@
   "keywords": [
     "cli",
     "security",
-    "dependency",
+    "dependency-analysis",
     "reachability",
     "osv",
-    "audit"
+    "audit",
+    "nodejs",
+    "javascript",
+    "typescript",
+    "npm",
+    "vulnerability-scanner",
+    "static-analysis",
+    "devsecops",
+    "sast",
+    "sarif",
+    "github-actions",
+    "supply-chain-security",
+    "tree-sitter"
   ],
   "author": "merupatel",
   "license": "MIT",
