@@ -19,5 +19,5 @@ npm-debug.log*
 !.env.example
 .DS_Store
 Thumbs.db
-/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*-prd.md
-/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*-todo.md
+2026-03-19-reachable-todo.md
+2026-03-19-reachable-prd.md
