@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Meru143/reachable/compare/v1.0.3...v1.0.4) (2026-03-20)
+
+
+### Bug Fixes
+
+* build package before pack and publish ([6e35eea](https://github.com/Meru143/reachable/commit/6e35eeac938166ddbafbc33bae0f1b1767abedf2))
+
 ## [1.0.3](https://github.com/Meru143/reachable/compare/v1.0.2...v1.0.3) (2026-03-19)
 
 
