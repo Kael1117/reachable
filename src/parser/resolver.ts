@@ -87,7 +87,7 @@ function resolveAlias(importPath: string, cwd: string): string | null {
 
     const wildcardValue = match[1] ?? "";
     for (const target of targets) {
-      const substituted = target.replace("*", wildcardValue);
+      const substituted = target.split("*").join(wildcardValue);
       const absoluteTarget = path.isAbsolute(substituted) ? substituted : path.resolve(config.baseUrl, substituted);
       const resolved = resolveFileCandidate(absoluteTarget);
       if (resolved) {

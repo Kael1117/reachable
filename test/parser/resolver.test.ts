@@ -65,4 +65,33 @@ describe("parser/resolver", () => {
 
     expect(resolveImport("@/components/Button", fromFile, cwd)).toBe(targetFile);
   });
+
+  it("replaces every wildcard occurrence in tsconfig path targets", () => {
+    const cwd = makeTempDir();
+    const fromFile = path.join(cwd, "src", "pages", "home.tsx");
+    const targetFile = path.join(cwd, "src", "generated", "widgets", "mirror", "widgets.ts");
+
+    mkdirSync(path.dirname(fromFile), { recursive: true });
+    mkdirSync(path.dirname(targetFile), { recursive: true });
+    writeFileSync(
+      path.join(cwd, "tsconfig.json"),
+      JSON.stringify(
+        {
+          compilerOptions: {
+            baseUrl: ".",
+            paths: {
+              "@/*": ["src/generated/*/mirror/*"],
+            },
+          },
+        },
+        null,
+        2,
+      ),
+      "utf8",
+    );
+    writeFileSync(fromFile, "export {};\n", "utf8");
+    writeFileSync(targetFile, "export const widget = true;\n", "utf8");
+
+    expect(resolveImport("@/widgets", fromFile, cwd)).toBe(targetFile);
+  });
 });

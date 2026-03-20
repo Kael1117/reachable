@@ -8,6 +8,8 @@
 
 It parses JavaScript and TypeScript with tree-sitter, builds a project call graph, queries OSV advisories, and reports whether the vulnerable symbol is reachable, unknown, or unreachable from your entry points.
 
+![reachable CLI demo](docs/assets/reachable-demo.gif)
+
 - Cut false-positive dependency noise by separating `REACHABLE`, `UNKNOWN`, and `UNREACHABLE` findings.
 - Fail CI on code paths that actually matter instead of every advisory in the lockfile.
 - Run locally or in GitHub Actions without a hosted service, account, or API key.
