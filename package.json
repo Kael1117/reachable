@@ -17,6 +17,7 @@
   "scripts": {
     "build": "tsup && node scripts/postbuild.cjs",
     "lint": "eslint . --ext .ts",
+    "prepack": "npm run build",
     "test": "vitest run --coverage",
     "test-integration": "vitest run --config vitest.integration.config.ts",
     "typecheck": "tsc --noEmit",
