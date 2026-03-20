@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Meru143/reachable/compare/v1.0.4...v1.0.5) (2026-03-20)
+
+
+### Bug Fixes
+
+* add cli demo and resolve wildcard aliases ([5c6a62d](https://github.com/Meru143/reachable/commit/5c6a62d2b191d9c78cfd1ad18253c977d82b76a8))
+
 ## [1.0.4](https://github.com/Meru143/reachable/compare/v1.0.3...v1.0.4) (2026-03-20)
 
 
