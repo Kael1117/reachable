@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/Meru143/reachable/compare/v1.0.5...v1.0.6) (2026-04-04)
+
+
+### Bug Fixes
+
+* scope reachable audit to production dependencies ([3b1a280](https://github.com/Meru143/reachable/commit/3b1a2803dbbd44a5341f9e0ce2096b933e4756b5))
+
 ## [1.0.5](https://github.com/Meru143/reachable/compare/v1.0.4...v1.0.5) (2026-03-20)
 
 
