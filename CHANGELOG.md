@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/Meru143/reachable/compare/v1.0.7...v1.0.8) (2026-04-04)
+
+
+### Bug Fixes
+
+* tighten landing page verdict panel ([22d975d](https://github.com/Meru143/reachable/commit/22d975dd0e93648138f6fcf9766435ab844f64fe))
+
 ## [1.0.7](https://github.com/Meru143/reachable/compare/v1.0.6...v1.0.7) (2026-04-04)
 
 
