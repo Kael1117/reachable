@@ -140,7 +140,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
 .verdict-strip span {
@@ -154,6 +154,32 @@ h2 {
 .reachable { color: #08110d; background: var(--accent); }
 .unknown { color: #1a1605; background: var(--accent-2); }
 .unreachable { color: #fff2f2; background: var(--danger); }
+
+.terminal-top {
+  display: flex;
+  gap: 8px;
+  padding: 18px 18px 0;
+}
+
+.terminal-top span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.terminal-top span:nth-child(1) { background: #ff7676; }
+.terminal-top span:nth-child(2) { background: #ffdd57; }
+.terminal-top span:nth-child(3) { background: #9dff76; }
+
+.hero-visual pre {
+  margin: 0;
+  min-height: 100%;
+  padding: 18px 22px 24px;
+  background: linear-gradient(180deg, rgba(6, 11, 9, 0.84), rgba(7, 13, 10, 0.98));
+  color: #f4f5ec;
+  line-height: 1.7;
+  overflow-x: auto;
+}
 
 .section { padding: 30px 0; }
 .section-head { max-width: 760px; }

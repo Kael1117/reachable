@@ -43,6 +43,11 @@
           <div class="hero-copy">
             <p class="eyebrow">Dependency triage with source awareness</p>
             <h1>Find the vulnerable code paths that matter, not just the packages that happen to be installed.</h1>
+            <div class="verdict-strip">
+              <span class="reachable">REACHABLE</span>
+              <span class="unknown">UNKNOWN</span>
+              <span class="unreachable">UNREACHABLE</span>
+            </div>
             <p class="lede">
               reachable parses JavaScript and TypeScript, builds a project call graph,
               looks up advisories, and tells you whether the vulnerable symbol is actually
@@ -52,16 +57,28 @@
               <a class="button primary" href="https://github.com/Meru143/reachable">Star on GitHub</a>
               <a class="button secondary" href="#install">Run reachable</a>
             </div>
-            <div class="verdict-strip">
-              <span class="reachable">REACHABLE</span>
-              <span class="unknown">UNKNOWN</span>
-              <span class="unreachable">UNREACHABLE</span>
-            </div>
           </div>
 
-          <div class="hero-visual">
-            <img src="./assets/reachable-demo.gif" alt="reachable CLI demo" />
-          </div>
+          <aside class="hero-visual" aria-label="reachable verdict output">
+            <div class="terminal-top">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <pre><code>$ reachable scan --advisory GHSA-35jh-r3h4-6jhm --entry src/index.ts
+
+package: minimist
+symbol: minimist.parse
+entrypoint: src/index.ts
+
+verdict: REACHABLE
+reason: src/index.ts -> cli/bootstrap.ts -> utils/argv.ts -> minimist.parse
+confidence: high
+
+next step:
+  patch or pin the dependency before merge
+</code></pre>
+          </aside>
         </section>
 
         <section id="verdicts" class="section">
