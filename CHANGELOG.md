@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/Meru143/reachable/compare/v1.0.6...v1.0.7) (2026-04-04)
+
+
+### Bug Fixes
+
+* trim landing page hero proof ([50e922b](https://github.com/Meru143/reachable/commit/50e922bce11b47c5c439b4ebf822fd98b6c41758))
+
 ## [1.0.6](https://github.com/Meru143/reachable/compare/v1.0.5...v1.0.6) (2026-04-04)
 
 
