@@ -78,6 +78,7 @@ pre, code { font-family: "Fira Code", ui-monospace, monospace; }
 .hero-visual {
   overflow: hidden;
   align-self: start;
+  height: fit-content;
 }
 
 .eyebrow {
