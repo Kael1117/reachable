@@ -58,6 +58,7 @@ pre, code { font-family: "Fira Code", ui-monospace, monospace; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.94fr);
   gap: 24px;
+  align-items: start;
   padding: 26px 0 40px;
 }
 
@@ -74,7 +75,10 @@ pre, code { font-family: "Fira Code", ui-monospace, monospace; }
 }
 
 .hero-copy { padding: 36px; }
-.hero-visual { overflow: hidden; }
+.hero-visual {
+  overflow: hidden;
+  align-self: start;
+}
 
 .eyebrow {
   margin: 0 0 14px;
@@ -173,7 +177,6 @@ h2 {
 
 .hero-visual pre {
   margin: 0;
-  min-height: 100%;
   padding: 18px 22px 24px;
   background: linear-gradient(180deg, rgba(6, 11, 9, 0.84), rgba(7, 13, 10, 0.98));
   color: #f4f5ec;
