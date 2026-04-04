@@ -8,6 +8,10 @@
 
 It parses JavaScript and TypeScript with tree-sitter, builds a project call graph, queries OSV advisories, and reports whether the vulnerable symbol is reachable, unknown, or unreachable from your entry points.
 
+Live page: [merup.me/reachable](https://merup.me/reachable/)
+
+The point is not to replace package-level scanners. It is to rank the work that actually matters by asking the next question those tools cannot answer on their own: does your code reach the vulnerable symbol?
+
 ![reachable CLI demo](docs/assets/reachable-demo.gif)
 
 - Cut false-positive dependency noise by separating `REACHABLE`, `UNKNOWN`, and `UNREACHABLE` findings.

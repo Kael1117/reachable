@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>reachable | Reachability-aware dependency triage for JS and TS</title>
+    <meta
+      name="description"
+      content="reachable turns package-level vulnerability noise into source-aware reachability verdicts for JavaScript and TypeScript projects."
+    />
+    <meta
+      property="og:title"
+      content="reachable | Reachability-aware dependency triage for JS and TS"
+    />
+    <meta
+      property="og:description"
+      content="Parse JS and TS with tree-sitter, build a call graph, and find out whether vulnerable symbols are actually reachable from your application."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://merup.me/reachable/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <a class="brand" href="https://github.com/Meru143/reachable">reachable</a>
+        <nav>
+          <a href="#verdicts">Verdicts</a>
+          <a href="#why">Why</a>
+          <a href="#install">Install</a>
+          <a href="https://github.com/Meru143/reachable">GitHub</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Dependency triage with source awareness</p>
+            <h1>Find the vulnerable code paths that matter, not just the packages that happen to be installed.</h1>
+            <p class="lede">
+              reachable parses JavaScript and TypeScript, builds a project call graph,
+              looks up advisories, and tells you whether the vulnerable symbol is actually
+              reachable from your application entry points.
+            </p>
+            <div class="actions">
+              <a class="button primary" href="https://github.com/Meru143/reachable">Star on GitHub</a>
+              <a class="button secondary" href="#install">Run reachable</a>
+            </div>
+            <div class="verdict-strip">
+              <span class="reachable">REACHABLE</span>
+              <span class="unknown">UNKNOWN</span>
+              <span class="unreachable">UNREACHABLE</span>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <img src="./assets/reachable-demo.gif" alt="reachable CLI demo" />
+          </div>
+        </section>
+
+        <section id="verdicts" class="section">
+          <div class="section-head">
+            <p class="eyebrow">Verdicts</p>
+            <h2>Cut false positives without pretending static analysis is magic.</h2>
+            <p>
+              reachable makes the uncertainty visible. When the tool can prove a path, it says
+              REACHABLE. When it cannot find one, it says UNREACHABLE. When resolution or dynamic
+              behavior leaves a gap, it says UNKNOWN instead of bluffing.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <h3>REACHABLE</h3>
+              <p>The vulnerable symbol is on a path from your entry points. This is the one you fail CI on first.</p>
+            </article>
+            <article class="card">
+              <h3>UNKNOWN</h3>
+              <p>Resolution hit a boundary or dynamic pattern that needs a closer look. It is a triage queue, not a hidden error.</p>
+            </article>
+            <article class="card">
+              <h3>UNREACHABLE</h3>
+              <p>The package may be installed, but the flagged symbol does not show up on a path from your code.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="why" class="section split">
+          <div class="section-head">
+            <p class="eyebrow">Why reachable</p>
+            <h2>Package-level alerts are cheap. Source-aware triage is the part teams actually need.</h2>
+            <p>
+              `npm audit` and hosted scanners are useful for visibility, but they do not know whether
+              your app imports or calls the vulnerable code. reachable fills that gap with a local-first
+              CLI you can run on demand or in CI.
+            </p>
+          </div>
+
+          <div class="compare">
+            <div class="compare-card strong">
+              <h3>reachable</h3>
+              <p class="metric">call graph + advisory mapping</p>
+              <p>Ranks advisories by whether the symbol is actually reached from your entry points.</p>
+            </div>
+            <div class="compare-card">
+              <h3>package-only scanners</h3>
+              <p class="metric">dependency list only</p>
+              <p>Good at inventory. Bad at telling you whether the risky code path touches your app.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="install" class="section install">
+          <div class="section-head">
+            <p class="eyebrow">Install</p>
+            <h2>Run it locally first. Wire it into CI when the verdicts feel trustworthy.</h2>
+            <p>
+              reachable is designed to slot into a normal JavaScript or TypeScript workflow with
+              a short install path and a direct CLI surface.
+            </p>
+          </div>
+
+          <div class="install-grid">
+            <pre><code>npm install -g @merupatel/reachable
+
+reachable scan --format table
+reachable trace lodash
+reachable graph src/index.ts</code></pre>
+            <pre><code>Use it for:
+
+- reachable-only CI gates
+- lockfile triage
+- advisory investigation
+- local audit workflows</code></pre>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
